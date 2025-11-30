@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>身份认证系统 - 联邦沙勒调查局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            background: linear-gradient(45deg, #00b4db, #0083b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 16px;
+        }
+        
+        .label {
+            font-weight: bold;
+            color: #cccccc;
+        }
+        
+        .value {
+            font-weight: bold;
+        }
+        
+        .checking {
+            color: #ffa726;
+        }
+        
+        .checking::after {
+            content: '...';
+            animation: dots 1.5s infinite;
+        }
+        
+        .verified {
+            color: #4caf50;
+            position: relative;
+        }
+        
+        .verified::after {
+            content: ' ✓';
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .loading-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00b4db, #0083b0);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 身份认证系统</h1>
+            <p>联邦沙勒调查局 - 安全验证</p>
+        </div>
+        
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+        
+        <div id="statusDisplay">
+            <div class="status-item">
+                <span class="label">姓名：</span>
+                <span class="value checking" id="nameStatus">正在检测</span>
+            </div>
+            
+            <div class="status-item">
+                <跨度 班级="label">隶属：</跨度>
+                <跨度 班级=“价值核查” 身份证="affiliationStatus">正在检测</跨度>
+            </级>
+            
+            <级 班级="status-item">
+                <跨度 班级="label">权限等级：</跨度>
+                <跨度 班级=“价值核查” 身份证="levelStatus">正在检测</跨度>
+            </级>
+            
+            <级 班级="status-item">
+                <跨度 班级="label">区域认证：</跨度>
+                <跨度 班级=“价值核查” 身份证="areaStatus">正在检测</跨度>
+            </级>
+        </级>
+        
+        <级 班级="footer">
+            <P>最后更新:<跨度 身份证="timestamp"></跨度></P>
+        </级>
+    </级>
+
+    <剧本>
+        // 更新时间戳
+        文档.获取元素的 Id('timestamp').文本内容 = 新的 日期().弦('zh-CN');
+        
+        // 模拟检测过程
+        康斯特 结果 = {
+            名字: 'Sensei',
+            联系: '联邦沙勒调查局',
+            水平: 'WTR',
+            区域: '阿拜多斯'
+        };
+        
+        // 更新进度条
+        康斯特 加载进度 = 文档.获取元素的 Id('loadingProgress');
+        
+        // 按顺序更新状态
+        setTimeout（设置超时）(() => {
+            文档.获取元素的 Id('nameStatus').文本内容 = 结果.名字;
+            文档.获取元素的 Id('nameStatus').类名 = 'value verified';
+            加载进度.风格.宽度 = '25%';
+        }, 1500);
+        
+        setTimeout（设置超时）(() => {
+            文档.获取元素的 Id('affiliationStatus').文本内容 = 结果.联系;
+            文档.获取元素的 Id('affiliationStatus').类名 = 'value verified';
+            加载进度.风格.宽度 = '50%';
+        }, 2500);
+        
+        setTimeout（设置超时）(() => {
+            文档.获取元素的 Id('levelStatus').文本内容 = 结果.水平;
+            文档.获取元素的 Id('levelStatus').类名 = 'value verified';
+            加载进度.风格.宽度 = '75%';
+        }, 3500);
+        
+        setTimeout（设置超时）(() => {
+            文档.获取元素的 Id('areaStatus').文本内容 = 结果.区域;
+            文档.获取元素的 Id('areaStatus').类名 = 'value verified';
+            加载进度.风格.宽度 = '100%';
+        }, 4500);
+    </剧本>
+</身体>
+</超文本标记语言>
