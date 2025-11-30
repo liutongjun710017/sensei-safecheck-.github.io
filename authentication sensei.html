@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>身份认证</title>
+    <style>
+        .checking { color: blue; }
+        .verified { color: green; }
+    </style>
+</head>
+<body>
+    <div id="display">
+        <p>姓名：<span id="name">正在检测...</span></p>
+        <p>隶属：<span id="affiliation">正在检测...</span></p>
+        <p>权限等级：<span id="level">正在检测...</span></p>
+        <p>区域认证：<span id="area">正在检测...</span></p>
+    </div>
+
+    <script>
+        // 模拟检测过程
+        setTimeout(() => {
+            document.getElementById('name').textContent = 'Sensei ✓';
+            document.getElementById('name').className = 'verified';
+        }, 1000);
+
+        setTimeout(() => {
+            document.getElementById('affiliation').textContent = '联邦沙勒调查局 ✓';
+            document.getElementById('affiliation').className = 'verified';
+        }, 1500);
+
+        setTimeout(() => {
+            document.getElementById('level').textContent = 'WTR ✓';
+            document.getElementById('level').className = 'verified';
+        }, 2000);
+
+        setTimeout(() => {
+            document.getElementById('area').textContent = '阿拜多斯 ✓';
+            document.getElementById('area').className = 'verified';
+        }, 2500);
+    </script>
+</body>
+</html>
